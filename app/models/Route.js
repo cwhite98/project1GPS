@@ -6,11 +6,11 @@ const RouteSchema = new Schema({
         type: String,
         index: true,
     },
-    lat: {
+    lats: {
         type: Array,
         index: true,
     },
-    lon: {
+    lons: {
         type: Array,
         index: true,
     },

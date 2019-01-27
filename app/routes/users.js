@@ -24,14 +24,14 @@ router.post('/signup', async (req, res) => {
     const emailUser = await User.findOne({email: email});
     if(emailUser) {
       req.flash('error_msg', 'The Email is already in use.');
-      res.redirect('/users/signup');
+      res.redirect('/signup');
     } else {
       // Saving a New User
       const newUser = new User({name, email, password});
       newUser.password = await newUser.encryptPassword(password);
       await newUser.save();
       req.flash('success_msg', 'You are registered.');
-      res.redirect('/users/login');
+      res.redirect('/login');
     }
   }
 });
