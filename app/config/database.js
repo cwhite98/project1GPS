@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.set('useFindAndModify', false);
-mongoose.connect('mongodb://localhost/proyecto1', {
+mongoose.connect('mongodb://mongo:27017/project1GPS', {
   useCreateIndex: true,
   useNewUrlParser: true
 })

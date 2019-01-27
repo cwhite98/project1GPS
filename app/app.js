@@ -9,7 +9,7 @@ const cons = require('consolidate');
 
 // Initializations
 const app = express();
-require('./database');
+require('./config/database');
 require('./config/passport');
 
 // settings
