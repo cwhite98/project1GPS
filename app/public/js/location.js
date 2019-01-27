@@ -12,11 +12,8 @@ function initMap() {
 }
 
 function trackMe() {
-    console.log('bWatchMe was clicked');
     if (navigator.geolocation) {
-        console.log("ES NAVIGATOR");
         watchID = navigator.geolocation.watchPosition(function (position) {
-            console.log('ES WATCH')
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
@@ -33,15 +30,9 @@ function trackMe() {
 }
 
 async function stop() {
-    console.log('bStop was clicked');
-    console.log("ME VOY A EJECUTAR");
     navigator.geolocation.clearWatch(watchID);
-    console.log("ME EJECUTE");
-    //setTimeout(2000000);
     document.getElementById('latitudes').value = JSON.stringify(latitudes);
     document.getElementById('longitudes').value = JSON.stringify(longitudes);
-    console.log(document.getElementById('latitudes').value);
-    console.log(document.getElementById('longitudes').value);
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

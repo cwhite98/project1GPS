@@ -18,20 +18,21 @@ router.post('/addRoute',isAuthenticated, async (req, res) => {
     newRoute.user = req.user.id;
     await newRoute.save();
     req.flash('success_msg', 'Route Added Successfully');
-    res.redirect('/maps');
+    res.redirect('/allRoutes');
 });
 
 // Get All Routes
 router.get('/allRoutes', isAuthenticated, async (req, res) => {
-    const routes = await Route.find({user: req.user.id}).sort({date: 'desc'});
-    res.render('maps/allRoutes', { routes });
+    const route = await Route.find({username: req.user.id}).sort({date: 'desc'});
+    console.log(route);
+    res.render('maps/allRoutes', { route });
 });
 
 // Delete Routes
 router.delete('/routes/delete/:id', isAuthenticated, async (req, res) => {
     await Route.findByIdAndDelete(req.params.id);
-    req.flash('success_msg', 'Note Deleted Successfully');
-    res.redirect('/notes');
+    req.flash('success_msg', 'Route Deleted Successfully');
+    res.redirect('/allRoutes');
 });
 
 module.exports = router;
