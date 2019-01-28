@@ -8,7 +8,7 @@
         <!-- DELETE REQUEST -->
         <form action="/routes/delete/{{_id}}?_method=DELETE" method="POST">
           <input type="hidden" name="_method" value="DELETE">
-          <button type="submit" class="btn btn-danger btn-block btn-sm">Delete</button>
+          <button type="submit" style="border-radius: 12px" class="btn btn-danger btn-block btn-sm">Delete</button>
         </form>
       </div>
     </div>
@@ -18,7 +18,7 @@
     <div class="card-body">
       <h1>Hello {{user.name}}</h1>
       <p clsss="lead">There are not routes yet.</p>
-      <a href="/maps" class="btn btn-success btn-block">Create One!</a>
+      <a href="/maps" class="otherButtons">Create One!</a>
     </div>
   </div>
   {{/each}}

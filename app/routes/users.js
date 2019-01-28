@@ -10,7 +10,7 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', async (req, res) => {
   let errors = [];
-  const { name, email, password, confirm_password } = req.body;
+  const { firstName, lastName, email, password, confirm_password } = req.body;
   if(password != confirm_password) {
     errors.push({text: 'Passwords do not match.'});
   }
@@ -18,7 +18,7 @@ router.post('/signup', async (req, res) => {
     errors.push({text: 'Passwords must be at least 4 characters.'})
   }
   if(errors.length > 0){
-    res.render('users/signup', {errors, name, email, password, confirm_password});
+    res.render('users/signup', {errors, firstName, lastName, email, password, confirm_password});
   } else {
     // Look for email coincidence
     const emailUser = await User.findOne({email: email});
@@ -27,7 +27,7 @@ router.post('/signup', async (req, res) => {
       res.redirect('/signup');
     } else {
       // Saving a New User
-      const newUser = new User({name, email, password});
+      const newUser = new User({firstName, lastName, email, password});
       newUser.password = await newUser.encryptPassword(password);
       await newUser.save();
       req.flash('success_msg', 'You are registered.');

@@ -12,8 +12,10 @@ function initMap() {
 }
 
 function trackMe() {
+    console.log("Es trackme");
     if (navigator.geolocation) {
         watchID = navigator.geolocation.watchPosition(function (position) {
+            console.log('Es watch');
             var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude

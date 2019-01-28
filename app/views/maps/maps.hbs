@@ -1,19 +1,21 @@
-<div id="map"></div>
-<div class="col-sm-4 mb-6">
-    <button id="bWatchMe" class="btn btn-primary btn-block btn-lg" onclick="trackMe()">
-        Track Me
-    </button>
-    <button id="bStop" class="btn btn-primary btn-block btn-lg" onclick="stop()">
-        Stop
-    </button>
-
-    <form action="/addRoute" method="POST">
-        <input type="hidden" id="latitudes" name="latitudes" value="">
-        <input type="hidden" id="longitudes" name="longitudes" value="">
-        <button type="submit" id="bSave" class="btn btn-primary btn-block btn-lg">
-            Save
+<div class="col-sm-5 mb-7">
+    <div class="btn-toolbar">
+        <button id="bWatchMe" class="buttonMap btn" onclick="trackMe()">
+            Track Me
         </button>
-    </form>
+        <button id="bStop" class="buttonMap btn" onclick="stop()">
+            Stop
+        </button>
+    </div>
+        <div id="map"></div>
+
+        <form action="/addRoute" method="POST">
+            <input type="hidden" id="latitudes" name="latitudes" value="">
+            <input type="hidden" id="longitudes" name="longitudes" value="">
+            <button type="submit" id="bSave" class="buttonMap btn">
+                Save
+            </button>
+        </form>
 </div>
 
 <script src="../../js/location.js"></script>
