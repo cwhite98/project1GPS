@@ -24,7 +24,7 @@ router.post('/addRoute',isAuthenticated, async (req, res) => {
 // Get All Routes
 router.get('/allRoutes', isAuthenticated, async (req, res) => {
     const route = await Route.find({username: req.user.id}).sort({date: 'desc'});
-    console.log(route);
+    //console.log(route);
     res.render('maps/allRoutes', { route });
 });
 

@@ -1,4 +1,4 @@
-<div class="col-sm-5 mb-7">
+<div class="col-sm-4 mb-3" style="cen">
     <div class="btn-toolbar">
         <button id="bWatchMe" class="buttonMap btn" onclick="trackMe()">
             Track Me
@@ -7,16 +7,18 @@
             Stop
         </button>
     </div>
-        <div id="map"></div>
 
-        <form action="/addRoute" method="POST">
-            <input type="hidden" id="latitudes" name="latitudes" value="">
-            <input type="hidden" id="longitudes" name="longitudes" value="">
-            <button type="submit" id="bSave" class="buttonMap btn">
-                Save
-            </button>
-        </form>
+    <div id='map'> </div>
+
+    <script src="../../js/location.js"></script>
+
+    <form action="/addRoute" method="POST">
+        <input type="hidden" id="latitudes" name="latitudes" value="">
+        <input type="hidden" id="longitudes" name="longitudes" value="">
+        <button type="submit" id="bSave" class="buttonMap btn">
+            Save
+        </button>
+    </form>
 </div>
 
-<script src="../../js/location.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAC_MBGOKSrR3a2FFN6c5V9J_wCasOP_8&callback=initMap">

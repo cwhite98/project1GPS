@@ -1,15 +1,16 @@
 var map;
 var watchID;
-var map;
 var latitudes = new Array;
 var longitudes = new Array;
 
 function initMap() {
+    console.log('ES INIT');
     map = new google.maps.Map(document.getElementById('map'), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 6
+        center: new google.maps.LatLng(51.508742,-0.120850),
+        zoom: 16
     });
 }
+
 
 function trackMe() {
     console.log("Es trackme");
@@ -23,7 +24,9 @@ function trackMe() {
             latitudes.push(pos.lat);
             longitudes.push(pos.lng);
             console.log("ES " + pos.lat + " , " + pos.lng);
-            addMarker(pos, map);
+            var marker = new google.maps.Marker({ position: pos});
+            marker.setMap(map);
+            map.setCenter(marker.getPosition());
         });
     } else {
         // Browser doesn't support Geolocation
@@ -42,13 +45,4 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setContent(browserHasGeolocation ?
         'Error: The Geolocation service failed.' :
         'Error: Your browser doesn\'t support geolocation.');
-}
-
-function addMarker(location, map) {
-    // Add the marker at the clicked location, and add the next-available label
-    var marker = new google.maps.Marker({
-        position: location,
-        map: map,
-        draggable: true
-    });
 }
