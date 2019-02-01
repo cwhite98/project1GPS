@@ -1,0 +1,10 @@
+<h1>ROUTE</h1>
+
+<form action="/route" method="GET">
+    <input type="hidden" id="lati" name="lati" value={{lats}}>
+    <input type="hidden" id="long" name="long" value={{lons}}>
+</form>
+
+<div id="map-canvas"></div>
+<script src="../../js/route.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAC_MBGOKSrR3a2FFN6c5V9J_wCasOP_8&callback=initMap">

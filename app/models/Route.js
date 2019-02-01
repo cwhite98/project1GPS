@@ -1,18 +1,17 @@
+/**
+ * The Route model in the database
+ */
+
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const RouteSchema = new Schema({
-    username: {
+    userId: {
         type: String,
-        index: true,
+        index: true
     },
-    lats: {
-        type: Array,
-        index: true,
-    },
-    lons: {
-        type: Array,
-        index: true,
+    name: {
+        type: String
     },
     date: {
         type: Date,

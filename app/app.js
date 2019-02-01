@@ -5,12 +5,16 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
-const cons = require('consolidate');
 
 // Initializations
 const app = express();
 require('./config/database');
 require('./config/passport');
+
+//Socket.io
+var http = require('http').Server(app);
+var io = require('socket.io').listen(http);
+module.exports = io;
 
 // settings
 app.set('views', path.join(__dirname, 'views'));
@@ -52,4 +56,4 @@ app.use(require('./routes/maps'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Server is listening
-app.listen(3000);
+http.listen(3000); //Cambie app.listen por http.listen
