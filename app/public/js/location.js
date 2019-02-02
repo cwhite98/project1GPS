@@ -1,26 +1,5 @@
 var map;
 var watchID;
-var xhttp; 
-
-function post(lat, lon) {
-    if (window.XMLHttpRequest) {
-      // code for modern browsers
-      xhttp = new XMLHttpRequest();
-      } else {
-      // code for IE6, IE5
-      xhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-           // Typical action to be performed when the document is ready:
-           console.log('Success');
-        }
-    };
-    xhttp.open("POST", "/addPoint", true);
-    xhttp.setRequestHeader("Content-Type", "application/json");
-    console.log(JSON.stringify(lat), JSON.stringify(lon));
-    xhttp.send({data: JSON.stringify({lat: lat, lon: lon })});
-}
 
 function initMap() {
     console.log('ES INIT');
@@ -34,6 +13,7 @@ function trackMe() {
     var socket = io();
     //document.getElementById('bWatchMe').disable = true;
     console.log("Es trackme");
+    socket.emit('new route', {user: document.getElementById('user').value, name: document.getElementById('routeName').value});
     if (navigator.geolocation) {
         console.log("navigator.geolocartion");
         watchID = navigator.geolocation.watchPosition(function (position) {
@@ -43,13 +23,10 @@ function trackMe() {
                 lng: position.coords.longitude
             };
             console.log("ES " + pos.lat + " , " + pos.lng);
-            socket.emit('new point', { latitude: pos.lat, lon: pos.longitude, user: document.getElementById('user').value}); //Aqui falta mandar el userId
+            socket.emit('new point', { latitude: pos.lat, longitude: pos.lng, user: document.getElementById('user').value});
             var marker = new google.maps.Marker({ position: pos });
             marker.setMap(map);
             map.setCenter(marker.getPosition());
-            document.getElementById('lat').value = pos.lat;
-            document.getElementById('lon').value = pos.lng;
-            //post(pos.lat, pos.lng);
         });
     } else {
         // Browser doesn't support Geolocation
@@ -59,6 +36,8 @@ function trackMe() {
 
 async function stop() {
     navigator.geolocation.clearWatch(watchID);
+    document.stopForm.submit();
+    console.log('STOP');
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

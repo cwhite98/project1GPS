@@ -1,29 +1,18 @@
-<div class="col-sm-4 mb-3" style="cen">
-    <input type="hidden" name="user" id="user" value={{user}}/>
+<div class="col-sm-4 mb-3">
+    <input type="hidden" name="user" id="user" value={{user}} />
     <div class="card-body">
-        <form id="name" name="name" action="/addRoute" method="POST">
-            <div class="form-group">
-                <input type="text" id="routeName" name="routeName" class="form-control" placeholder="Route Name"
-                    autofocus required/>
-            </div>
-
-            <button id="bSave" class="buttonMap btn" type="submit">
-                Save
-            </button>
-        </form>
+        <div class="form-grou ">
+            <input type="text" id="routeName" name="routeName" value="" class="form-control" placeholder="Route Name" autofocus
+                required />
+        </div>
         <button id="bWatchMe" class="buttonMap btn" onclick="trackMe()">
-                Track Me
-            </button>
+            Track Me
+        </button>
+
         <button id="bStop" class="buttonMap btn" onclick="stop()">
             Stop
         </button>
-
-        <form id="addPoint" name="addPoint" action="/addPoint" method="POST">
-            <input type="hidden" name="lat" id="lat" value=""/>
-            <input type="hidden" name="lon" id="lon" value=""/>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        </form>
-
+        <form action="/stop" method="GET" id="stopForm" name="stopForm"></form>
     </div>
 
     <div id='map'> </div>

@@ -13,46 +13,32 @@ const { isAuthenticated } = require('../helpers/auth');
 let lastRouteId = "";
 
 router.get('/maps', isAuthenticated, (req, res) => {
-    res.render('maps/maps', {user: req.user.id});
+    res.render('maps/maps', { user: req.user.id });
 });
 
 //Store point in DB
-io.on('connection', function(socket) {
+io.on('connection', function (socket) {
     socket.on('new point', async function (data) {
-        const newPoint = new Point({routeId: lastRouteId, lat: data.latitude,
-            lon: data.longitude, userId: data.user});//Falta el userID 
+        const newPoint = new Point({
+            routeId: lastRouteId, lat: data.latitude, lon: data.longitude, userId: data.user
+        });
         await newPoint.save();
         console.log("Point saved :)");
     });
 });
 
-router.post('/addPoint', isAuthenticated, async function(req, res){ 
-    console.log("llegue");
-    latitude = req.body.lat;
-    longitude = req.body.lon;
-    route = lastRouteId;
-    username = req.user.id;
-    const newPoint = new Point({routeId: lastRouteId, lat: latitude, lon: longitude, userId: username}); 
-    await newPoint.save();
-    req.flash('success', 'Point Added');
-    res.redirect('/maps');
-});
-
-//Store route in data base
-router.post('/addRoute', isAuthenticated, async (req, res) => {
-    //console.log(req.user.id);
-    console.log(req.body.routeName);
-    const newRoute = new Route({ userId: req.user.id, name: req.body.routeName });
-    await newRoute.save();
-    //console.log(newRoute.id);
-    lastRouteId = newRoute.id;
-    req.flash('success_msg', 'Route Added Successfully');
-    res.redirect('/maps');
+io.on('connection', function (socket) {
+    socket.on('new route', async function (data) {
+        const newRoute = new Route({ userId: data.user, name: data.name });
+        await newRoute.save();
+        lastRouteId = newRoute.id;
+        console.log("Route saved :)");
+    });
 });
 
 // Get All Routes
 router.get('/allRoutes', isAuthenticated, async (req, res) => {
-    const route = await Point.find({ username: req.user.id, routeId: req.body.routeId }).sort({ date: 'desc' });
+    const route = await Route.find({ userId: req.user.id}).sort({ date: 'desc' });
     res.render('maps/allRoutes', { route });
 });
 
@@ -63,8 +49,15 @@ router.delete('/routes/delete/:id', isAuthenticated, async (req, res) => {
     res.redirect('/allRoutes');
 });
 
-router.get('/route', (req, res) => {
-    res.render('maps/route');
+//Show route
+router.get('/route/:id', isAuthenticated, async (req, res) => {
+  var points = await Point.find({routeId: req.params.id}).sort({ date: 'desc' });
+  res.render('maps/route', {pointArray: JSON.stringify(points)});
 });
 
+//Stop route
+router.get('/stop', isAuthenticated, async (req, res) => {
+    req.flash('success_msg', 'Route Created Successfully');
+    res.redirect('/allRoutes');
+});
 module.exports = router;
