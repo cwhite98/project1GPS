@@ -27,7 +27,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         destination: new google.maps.LatLng(points[points.length-1].lat, points[points.length-1].lon),
         waypoints: waypts,
         optimizeWaypoints: true,
-        travelMode: 'WALKING'
+        travelMode: 'DRIVING'
     }, function (response, status) {
         if (status === 'OK') {
             directionsDisplay.setDirections(response);
