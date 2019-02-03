@@ -11,7 +11,7 @@ brew install mongodb
 To verify is MongoDB was install, run
 ```
 mongo
-
+```
 
 ## Create app
 The first step to creating the app, run
