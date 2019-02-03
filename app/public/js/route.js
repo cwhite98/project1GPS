@@ -15,7 +15,12 @@ function initMap() {
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var waypts = [];
-    max = Math.floor(points.length/25);
+    var max;
+    if(points.length-2 > 8) {
+        max = Math.floor(points.length/8);
+    } else {
+        max = 1;
+    }
     for(var i = 1; i < points.length - 1; i+max) { 
         waypts.push({
             location: new google.maps.LatLng(points[i].lat, points[i].lon), 
@@ -28,7 +33,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         destination: new google.maps.LatLng(points[points.length-1].lat, points[points.length-1].lon),
         waypoints: waypts,
         optimizeWaypoints: true,
-        travelMode: 'DRIVING'
+        travelMode: 'WALKING'
     }, function (response, status) {
         if (status === 'OK') {
             directionsDisplay.setDirections(response);
