@@ -51,8 +51,9 @@ docker-compose up
 To run the container **detach**
 ```
 docker-compose up -d
-
-
-
-
-
+```
+Check if the app was deployed
+```
+http://ipserver_or_domain
+```
+The domain for this app is: https://cwhiter.dis.eafit.edu.co
