@@ -9,12 +9,16 @@ brew install node
 brew install mongodb
 ```
 To verify is MongoDB was install, run
-`mongo`
+```
+mongo
+
 
 ## Create app
 The first step to creating the app, run
 
-`npm init -y`
+```
+npm init -y
+```
 
 This command creates the **package.json**.
 
