@@ -8,7 +8,7 @@ brew update
 brew install node
 brew install mongodb
 ```
-To verify is MongoDB was install, run
+To verify is MongoDB was installed, run
 ```
 mongo
 ```
@@ -27,5 +27,9 @@ After having the **package.json** file, run
 ```
 npm install bcryptjs connect-flash express express-handlebars express-session method-override mongoose passport passport-local socket.io
 ```
+
+## Docker
+
+
 
 
