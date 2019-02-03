@@ -1,7 +1,14 @@
 # **Project 1 GPS Track**
 
-By Camila White Romero - cwhiter@eafit.edu.co
+### By Camila White Romero - cwhiter@eafit.edu.co
 
-This app tracks the user location and stores it in a data base, to create a route of all the locations.
+## Description
+
+The app lets the user keep track of his location and then see the route he made. 
+
+## Analysis and Design
+### Functional Requirements
+1. jhv
+
 
 The style is based in one of [FaztWeb](https://faztweb.com) tutorials.
