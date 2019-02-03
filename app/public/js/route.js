@@ -15,7 +15,7 @@ function initMap() {
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var waypts = [];
-    max = Math.trunc(points.length/23);
+    max = Math.trunc(Math.floor(points.length/23));
     for(var i = 1; i < points.length - 1; i+max) { 
         waypts.push({
             location: new google.maps.LatLng(points[i].lat, points[i].lon), 
