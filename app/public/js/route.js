@@ -32,7 +32,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         origin: new google.maps.LatLng(points[0].lat, points[0].lon),
         destination: new google.maps.LatLng(points[points.length-1].lat, points[points.length-1].lon),
         //waypoints: waypts,
-        //optimizeWaypoints: true,
+        optimizeWaypoints: true,
         travelMode: 'WALKING'
     }, function (response, status) {
         if (status === 'OK') {
