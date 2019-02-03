@@ -1,9 +1,8 @@
 var points;
+var map;
 
 function initMap() {
-    var map;
     points = JSON.parse(document.getElementById('points').value);
-    console.log(points);
     map = new google.maps.Map(document.getElementById('map-canvas'), {
         center: new google.maps.LatLng(6.200367, -75.577609),
         zoom: 16
@@ -16,12 +15,14 @@ function initMap() {
 
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var waypts = [];
-    for (var i = 1; i < points.length-1; i++) {
+    max = Math.trunc(points.length/23);
+    for(var i = 1; i < points.length - 1; i+max) { 
         waypts.push({
-            location: new google.maps.LatLng(points[i].lat, points[i].lon),
+            location: new google.maps.LatLng(points[i].lat, points[i].lon), 
             stopover: true
         });
-    }
+    };
+    console.log(waypts);
     directionsService.route({
         origin: new google.maps.LatLng(points[0].lat, points[0].lon),
         destination: new google.maps.LatLng(points[points.length-1].lat, points[points.length-1].lon),

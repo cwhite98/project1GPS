@@ -41,3 +41,8 @@ body {
   height:500px;
   width: 350%;
 }
+
+#mode {
+  margin-top: 10px;
+  margin-left: 10px;
+}
