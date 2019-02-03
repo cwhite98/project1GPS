@@ -57,3 +57,6 @@ Check if the app was deployed
 http://ipserver_or_domain
 ```
 The domain for this app is: https://cwhiter.dis.eafit.edu.co
+
+## Deploy in AWS
+
