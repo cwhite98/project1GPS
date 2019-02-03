@@ -20,7 +20,8 @@ This command creates the **package.json**.
 
 ## Installing all dependencies
 After having the **package.json** file, run
-
-`npm install bcryptjs connect-flash express express-handlebars express-session method-override mongoose passport passport-local socket.io
+```
+npm install bcryptjs connect-flash express express-handlebars express-session method-override mongoose passport passport-local socket.io
+```
 
 
