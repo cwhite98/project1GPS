@@ -29,7 +29,7 @@ npm install bcryptjs connect-flash express express-handlebars express-session me
 ```
 
 ## Docker
-
+Download the [Docker graphic installer](https://docs.docker.com/docker-for-mac/install/)
 
 
 
