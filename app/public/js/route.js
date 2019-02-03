@@ -1,5 +1,4 @@
 var points;
-var map;
 
 function initMap() {
     points = JSON.parse(document.getElementById('points').value);
@@ -16,12 +15,12 @@ function initMap() {
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var waypts = [];
     var max;
-    if(points.length-2 > 23) {
-        max = Math.floor((points.length-2)/23);
+    if(points.length-2 > 8) {
+        max = Math.floor((points.length-2)/8);
     } else {
         max = 1;
     }
-    for(var i = 1; i < points.length - 1; i=i+max) { 
+    for(var i = 1; i < points.length-1; i = i+max) { 
         waypts.push({
             location: new google.maps.LatLng(points[i].lat, points[i].lon), 
             stopover: false
