@@ -17,21 +17,21 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     var waypts = [];
     var max;
     if(points.length-2 > 23) {
-        max = Math.floor(points.length/23);
+        max = Math.floor((points.length-2)/23);
     } else {
         max = 1;
     }
     for(var i = 1; i < points.length - 1; i=i+max) { 
         waypts.push({
             location: new google.maps.LatLng(points[i].lat, points[i].lon), 
-            stopover: true
+            stopover: false
         });
     };
     console.log(waypts);
     directionsService.route({
         origin: new google.maps.LatLng(points[0].lat, points[0].lon),
         destination: new google.maps.LatLng(points[points.length-1].lat, points[points.length-1].lon),
-        //waypoints: waypts,
+        waypoints: waypts,
         optimizeWaypoints: true,
         travelMode: 'WALKING'
     }, function (response, status) {
