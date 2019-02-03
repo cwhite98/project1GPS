@@ -33,5 +33,26 @@ Download the [Docker graphic installer](https://docs.docker.com/docker-for-mac/i
 
 Create the [Dockerfile](Dockerfile), [docker-compose](docker-compose.yml) and [NGINX configuration](nginx.conf)
 
+In the **DCA**, clone the repository
+
+```
+git clone https://github.com/cwhite98/project1GPS.git
+cd project1GPS
+```
+And then deploy the app with Docker
+First create the Docker container
+```
+docker-compose build
+```
+Second run de docker container
+```
+docker-compose up
+```
+To run the container **detach**
+```
+docker-compose up -d
+
+
+
 
 
