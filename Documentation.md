@@ -59,4 +59,6 @@ http://ipserver_or_domain
 The domain for this app is: https://cwhiter.dis.eafit.edu.co
 
 ## Deploy in AWS
-
+- Create an accout in [AWS Educate](https://www.awseducate.com)
+- Launch Virtual Machine with EC2
+- 
