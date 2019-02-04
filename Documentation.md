@@ -137,5 +137,20 @@ sudo chmod +x /usr/local/bin/docker-compose
 docker-compose version
 ```
 
+After having Docker installed, clone the repository
 
+```
+mkdir apps
+cd apps
+git clone https://github.com/cwhite98/project1GPS.git
+cd project1GPS
+```
 
+Deploy the app with Docker
+
+```
+docker-compose build
+docker-compose up -d
+```
+
+Access the app via: https://ec2-3-92-193-165.compute-1.amazonaws.com
