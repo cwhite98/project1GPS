@@ -75,7 +75,10 @@ The domain for this app is: https://cwhiter.dis.eafit.edu.co
 ![](./docs/selectInstance.png)
 - Add the ports 80 and 443.
 ![](./docs/Screen Shot 2019-02-03 at 12.53.13 PM.png)
+
 ![](./docs/Screen Shot 2019-02-03 at 1.02.59 PM.png)
+
 ![](./docs/Screen Shot 2019-02-03 at 1.06.36 PM.png)
+
 ![](./docs/Screen Shot 2019-02-03 at 1.08.42 PM.png)
 
