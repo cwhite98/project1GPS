@@ -63,10 +63,19 @@ The domain for this app is: https://cwhiter.dis.eafit.edu.co
 - Launch Virtual Machine with EC2
 ![](./docs/tapEC2.png)
 - Select Launch Instance
+![](./docs/launchInstance.png)
 - Choose Amazon Linux 2 64-bit(x86)
+![](./docs/AmazonLinux2.png)
 - Select the Free tier and then press Review and Launch.
+![](./docs/freeTier.png)
 - Press Launch again.
 - Select create a new pair key, give it a name, then Download it and finaly Launch Instance. 
+![](./docs/key.png)
 - Select the instance.
+![](./docs/selectInstance.png)
 - Add the ports 80 and 443.
+![](./docs/Screen Shot 2019-02-03 at 12.53.13 PM.png)
+![](./docs/Screen Shot 2019-02-03 at 1.02.59 PM.png)
+![](./docs/Screen Shot 2019-02-03 at 1.06.36 PM.png)
+![](./docs/Screen Shot 2019-02-03 at 1.08.42 PM.png)
 
