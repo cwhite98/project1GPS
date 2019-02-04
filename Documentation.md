@@ -61,4 +61,12 @@ The domain for this app is: https://cwhiter.dis.eafit.edu.co
 ## Deploy in AWS
 - Create an accout in [AWS Educate](https://www.awseducate.com)
 - Launch Virtual Machine with EC2
-- 
+![](./docs/tapEC2.png)
+- Select Launch Instance
+- Choose Amazon Linux 2 64-bit(x86)
+- Select the Free tier and then press Review and Launch.
+- Press Launch again.
+- Select create a new pair key, give it a name, then Download it and finaly Launch Instance. 
+- Select the instance.
+- Add the ports 80 and 443.
+
