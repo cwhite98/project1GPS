@@ -8,9 +8,12 @@ ARG PORT=3000
 ENV PORT $PORT
 
 WORKDIR /project1GPS
-COPY . ./
 
-RUN npm install --test
+COPY package*.json ./
+
+RUN npm install 
+
+COPY . ./
 
 EXPOSE 3000
 CMD npm start
