@@ -61,18 +61,31 @@ The domain for this app is: https://cwhiter.dis.eafit.edu.co
 ## Deploy in AWS
 - Create an accout in [AWS Educate](https://www.awseducate.com)
 - Launch Virtual Machine with EC2
+
 ![](./docs/tapEC2.png)
+
 - Select Launch Instance
+
 ![](./docs/launchInstance.png)
+
 - Choose Amazon Linux 2 64-bit(x86)
+
 ![](./docs/AmazonLinux2.png)
+
 - Select the Free tier and then press Review and Launch.
+
 ![](./docs/freeTier.png)
+
 - Press Launch again.
+
 - Select create a new pair key, give it a name, then Download it and finaly Launch Instance. 
+
 ![](./docs/key.png)
+
 - Select the instance.
+
 ![](./docs/selectInstance.png)
+
 - Add the ports 80 and 443.
 
 ![](./docs/1.png)
@@ -83,3 +96,21 @@ The domain for this app is: https://cwhiter.dis.eafit.edu.co
 
 ![](./docs/4.png)
 
+After having the Virtual Machine configured, proceed to connect via ssh.
+
+```
+cd .ssh/
+```
+Move the key to the directory **.ssh** and give permissions.
+
+```
+mv ../Downloads/project1.pem .
+chmod 400 project1.pem
+```
+
+Then connect via ssh.
+```
+ssh -i "project1.pem" ec2-user@ec2-3-92-193-165.compute-1.amazonaws.com
+```
+
+Install **Docker**
