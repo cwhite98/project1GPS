@@ -11,7 +11,7 @@ function initMap() {
 
 function trackMe() {
     var socket = io();
-    //document.getElementById('bWatchMe').disable = true;
+    document.getElementById('bWatchMe').disabled = true;
     console.log("Es trackme");
     socket.emit('new route', {user: document.getElementById('user').value, name: document.getElementById('routeName').value});
     if (navigator.geolocation) {
