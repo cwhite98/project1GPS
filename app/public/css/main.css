@@ -22,14 +22,21 @@ body {
   padding: 9px 20px;
   font-size: 20px;
   font-weight: bold;
-  color: white;
+  border:  #89CFCB;
+  color: white; 
+  margin-top:10px;
 }
 
 .seeRoute {
   background-color: #89CFCB;
+  border:  #89CFCB;
+  padding: 8px 8px;
   border-radius: 12px; 
   color: white;
   font-size: 15px;
+}
+.form-group {
+  margin-bottom:5px;
 }
 
 #map {
@@ -38,7 +45,7 @@ body {
 }
 
 #map-canvas {
-  height:500px;
+  height:600px;
   width: 350%;
 }
 

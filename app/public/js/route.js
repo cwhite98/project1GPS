@@ -1,5 +1,12 @@
+/**
+ * Shows the route
+ */
+
 var points;
 
+/**
+ * Paints the map
+ */
 function initMap() {
     points = JSON.parse(document.getElementById('points').value);
     map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -12,10 +19,16 @@ function initMap() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
 }
 
+/**
+ * Paints the route
+ * @param {*} directionsService calculate directions
+ * @param {*} directionsDisplay render route
+ */
 function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-    var waypts = [];
+    var waypts = []; //Points between origin and destination
+    //Calculate the strp to store waypoints
     var max;
-    if(points.length-2 > 8) {
+    if(points.length-2 > 8) { //8 is the max waypoints permited by Google Maps for non premium
         max = Math.floor((points.length-2)/8);
     } else {
         max = 1;
@@ -26,7 +39,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             stopover: false
         });
     };
-    console.log(waypts);
+    //Paint route
     directionsService.route({
         origin: new google.maps.LatLng(points[0].lat, points[0].lon),
         destination: new google.maps.LatLng(points[points.length-1].lat, points[points.length-1].lon),

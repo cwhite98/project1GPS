@@ -1,5 +1,5 @@
 /**
- * The Route model in the database
+ * The Point model in the database
  */
 
 const mongoose = require('mongoose');

@@ -1,24 +1,38 @@
+/**
+ * Controller for everything related with points and routes
+ */
 const router = require('express').Router();
 
 const io = require('../app');
 
-// Models
+/**
+ * Requiered models
+ */
 const Route = require('../models/Route');
 const Point = require('../models/Point');
 const Shared = require('../models/SharedRoute')
 const User = require('../models/User');
 
-// Helpers
+/**
+ * Helpers
+ */
 const { isAuthenticated } = require('../helpers/auth');
 
-//Vars
+/**
+ * Vars
+ */
 let lastRouteId = "";
 
+/**
+ * domain/maps , and sends the user id to obtain route name 
+ */
 router.get('/maps', isAuthenticated, (req, res) => {
     res.render('maps/maps', { user: req.user.id });
 });
 
-//Store point in DB
+/**
+ * Stores point in data base in real time
+ */
 io.on('connection', function (socket) {
     socket.on('new point', async function (data) {
         const newPoint = new Point({
@@ -28,6 +42,9 @@ io.on('connection', function (socket) {
     });
 });
 
+/**
+ * Stores route name in data base
+ */
 io.on('connection', function (socket) {
     socket.on('new route', async function (data) {
         const newRoute = new Route({ userId: data.user, name: data.name });
@@ -36,67 +53,64 @@ io.on('connection', function (socket) {
     });
 });
 
-// Get All Routes
+/**
+ * domain/allRoutes , and sends the routes that the user created to display them 
+ */
 router.get('/allRoutes', isAuthenticated, async (req, res) => {
     const route = await Route.find({ userId: req.user.id }).sort({ date: 'desc' });
     res.render('maps/allRoutes', { route });
 });
 
-// Delete Route
+/**
+ * Delete Route
+ */
 router.delete('/routes/delete/:id', isAuthenticated, async (req, res) => {
     await Route.findByIdAndDelete(req.params.id);
     req.flash('success_msg', 'Route Deleted Successfully');
     res.redirect('/allRoutes');
 });
 
-//Show route
+/**
+ * domain/route , sends points to paint them in route
+ */
 router.get('/route/:id', isAuthenticated, async (req, res) => {
     var points = await Point.find({ routeId: req.params.id }).sort({ date: 'desc' });
     res.render('maps/route', { pointArray: JSON.stringify(points) });
 });
 
-//Stop route
+/**
+ * Send message when button stop is pressed
+ */
 router.get('/stop', isAuthenticated, async (req, res) => {
     req.flash('success_msg', 'Route Created Successfully');
     res.redirect('/allRoutes');
 });
 
-//Shared routes with me
+/**
+ * domain/sharedRoutes , sends an array of routes to get points of the route and display them
+ */
 router.get('/sharedRoutes', isAuthenticated, async (req, res) => {
     var routeArray = []; //Routes shared with me
-    var userArray = []; //The users that shared it
-    var pointArray = []; //The points of those routes
     const user = await User.findOne({ _id: req.user.id });
     const shared = await Shared.find({ viewers: user.username });
-
-
     if (shared.length >= 1) {
-        //Si han compartido
+        //If someone has shared
         for (var i = 0; i < shared.length; i++) {
-            const point = await Point.find({ routeId: shared[i].route });
             const route = await Route.find({ _id: shared[i].route });
-            console.log('Route es ', route);
-            const user = await User.find({ _id: shared[i].owner });
-            if (route._id == point.routeId) {
-                pointArray.push(point);
-                routeArray.push(route);
-                userArray.push(user);
-            }
+            routeArray.push(route);
         }
-    } else {
-        req.flash('error_msg', 'Nobody has shared routes with you.');
-        res.redirect('/sharedRoutes');
     }
-    console.log(routeArray);
     var newArr = []
+    //Converts a 2D array into a 1D
     for (var i = 0; i < routeArray.length; i++) {
         newArr = newArr.concat(routeArray[i]);
     }
-    console.log(newArr);
     res.render('maps/shared', { route: newArr });
 });
 
-//Share route
+/**
+ * Share route
+ */
 router.get('/shareRoute/:id', isAuthenticated, async (req, res) => {
     var shared = new Shared();
     const username = req.query.username;
@@ -112,7 +126,7 @@ router.get('/shareRoute/:id', isAuthenticated, async (req, res) => {
     } else if (!user) {
         req.flash('error_msg', 'Username does not exist.');
         res.redirect('/allRoutes');
-    } else if (!routeUser) {
+    } else if (routeUser <= 0) {
         req.flash('error_msg', 'This route has been already shared with that user.');
         res.redirect('/allRoutes');
     } else {
@@ -124,7 +138,6 @@ router.get('/shareRoute/:id', isAuthenticated, async (req, res) => {
         } else {
             //Add new shared route to database
             shared.route = req.query.route;
-            shared.owner = req.user.id;
             shared.viewers = username;
             shared.save();
             req.flash('success', 'Route shared');
@@ -133,11 +146,5 @@ router.get('/shareRoute/:id', isAuthenticated, async (req, res) => {
     }
 });
 
-//Show shared routes
-router.get('/showSharedRoutes/:id', isAuthenticated, (req, res) => {
-    var point = Point.find({ route: req.query.route });
-    var route = Route.find({ _id: req.query.route });
-    res.render('maps/showRoute', { title: route[0].name, points: point });
-});
 
 module.exports = router;

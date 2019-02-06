@@ -1,29 +1,40 @@
+/**
+ * Paints the map and tracks the users location
+ */
+
 var map;
 var watchID;
+var infoWindow;
 
+/**
+ * Paints the map
+ */
 function initMap() {
     console.log('ES INIT');
     map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(6.200367, -75.577609),
         zoom: 16
     });
+    infoWindow = new google.maps.InfoWindow;
 }
 
+/**
+ * Strats tracking the user
+ */
 function trackMe() {
     var socket = io();
-    document.getElementById('bWatchMe').disabled = true;
-    console.log("Es trackme");
+    document.getElementById('bWatchMe').disabled = true; //disables the button 
+    //Store with socket the route name
     socket.emit('new route', {user: document.getElementById('user').value, name: document.getElementById('routeName').value});
     if (navigator.geolocation) {
-        console.log("navigator.geolocartion");
         watchID = navigator.geolocation.watchPosition(function (position) {
-            console.log('Es watch');
             pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
-            console.log("ES " + pos.lat + " , " + pos.lng);
+            //Stores de users location
             socket.emit('new point', { latitude: pos.lat, longitude: pos.lng, user: document.getElementById('user').value});
+            //Creates and sets the marker
             var marker = new google.maps.Marker({ position: pos });
             marker.setMap(map);
             map.setCenter(marker.getPosition());
@@ -34,10 +45,13 @@ function trackMe() {
     }
 }
 
+/**
+ * Stops tracking the user
+ */
 async function stop() {
     navigator.geolocation.clearWatch(watchID);
     document.stopForm.submit();
-    console.log('STOP');
+    document.getElementById('bWatchMe').disabled = false;
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {

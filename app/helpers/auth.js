@@ -1,5 +1,5 @@
 /**
- * This helper lets us check is the user is already authenticated for some functions od the app. 
+ * This helper lets us check is the user is already authenticated for some functions on the app. 
  */
 const helpers = {};
 

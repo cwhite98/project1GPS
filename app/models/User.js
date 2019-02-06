@@ -1,3 +1,7 @@
+/**
+ * The User model in the database
+ */
+
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
@@ -30,12 +34,18 @@ const UserSchema = new Schema({
   }
 });
 
+/**
+ * Encrypt password
+ */
 UserSchema.methods.encryptPassword = async (password) => {
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
   return hash;
 };
 
+/**
+ * Compared the entered password with the stores one
+ */
 UserSchema.methods.matchPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
