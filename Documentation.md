@@ -110,7 +110,7 @@ chmod 400 project1.pem
 
 Then connect via ssh.
 ```
-ssh -i "project1.pem" ec2-user@ec2-3-92-193-165.compute-1.amazonaws.com
+ssh -i "project1.pem" ec2-user@ec2-3-81-154-255.compute-1.amazonaws.com
 ```
 
 
@@ -153,4 +153,4 @@ docker-compose build
 docker-compose up -d
 ```
 
-Access the app via: https://ec2-3-92-193-165.compute-1.amazonaws.com
+Access the app via: https://ec2-3-81-154-255.compute-1.amazonaws.com
