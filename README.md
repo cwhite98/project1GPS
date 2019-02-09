@@ -183,18 +183,14 @@ The domain for this app is: https://cwhiter.dis.eafit.edu.co
 
 - Then, configure the IP Address as static. 
     - Select the instance and then in the left menu select “Network & Security -> Elastic IPs”.
-    
     ![](./docs/ElasticIPs.png)
     
     - Press the Allocate New Address, select Amazon pool and then press allocate.
-    
     ![](./docs/AllocateNewAddress.png)
-    
     ![](./docs/AmazonPool.png)
     
     - After having the IP Address, press close.
     - Then, select the instance, Actions, and then Associate Address.
-    
     ![](./docs/AssociateAddress.png)
     ![](./docs/AssociateAddress2.png)
     
