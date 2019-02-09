@@ -253,4 +253,4 @@ docker-compose up -d
 
 Access the app via: https://ec2-3-81-154-255.compute-1.amazonaws.com
 
-After checking that the previous link works, proceed with getting a domain in [dot.tk](dot.tk)
+After checking that the previous link works, proceed with getting a domain in [dot.tk](http://www.dot.tk/en/index.html?lang=en)
