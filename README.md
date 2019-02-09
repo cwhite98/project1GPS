@@ -2,7 +2,7 @@
 
 ### By Camila White Romero - cwhiter@eafit.edu.co
 
-# 1 Description
+# 1. Description
 
 The app lets the user keep track of his location and then see the route he made. 
 The style is based in one of [FaztWeb](https://faztweb.com) tutorials.
