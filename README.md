@@ -109,7 +109,7 @@ This command creates the **package.json**.
 ## 3.3. Installing all dependencies
 After having the **package.json** file, run
 ```
-npm install bcryptjs connect-flash express express-handlebars express-session method-override mongoose passport passport-local socket.io
+npm install bcryptjs connect-flash express express-handlebars express-session method-override mongoose passport passport-local socket.io --save
 ```
 
 ## 3.4. Docker
@@ -120,7 +120,6 @@ Create the [Dockerfile](Dockerfile), [docker-compose](docker-compose.yml) and [N
 ## 3.5. Deploy in DCA
 
 Clone the repository
-
 ```
 git clone https://github.com/cwhite98/project1GPS.git
 cd project1GPS
@@ -182,6 +181,23 @@ The domain for this app is: https://cwhiter.dis.eafit.edu.co
 
 ![](./docs/4.png)
 
+- Then, configure the IP Address as static. 
+    - Select the instance and then in the left menu select “Network & Security -> Elastic IPs”.
+    
+    ![](./docs/ElasticIPs.png)
+    
+    - Press the Allocate New Address, select Amazon pool and then press allocate.
+    
+    ![](./docs/AllocateNewAddress.png)
+    
+    ![](./docs/AmazonPool.png)
+    
+    - After having the IP Address, press close.
+    - Then, select the instance, Actions, and then Associate Address.
+    
+    ![](./docs/AssociateAddress.png)
+    ![](./docs/AssociateAddress2.png)
+    
 After having the Virtual Machine configured, proceed to connect via ssh.
 
 ```
