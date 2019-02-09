@@ -7,18 +7,18 @@
 The app lets the user keep track of his location and then see the route he made. 
 The style is based in one of [FaztWeb](https://faztweb.com) tutorials.
 
-# 2 Analysis and Design
+# 2. Analysis and Design
 
-## 2.1 Functional Requirements
+## 2.1. Functional Requirements
 - The app must let the user Sign Up or Login.
 - The app must let the user thack his location.
 - The app must show with a route all the places he visited.
 
-## 2.2 Non-Functional Requirements
+## 2.2. Non-Functional Requirements
 - The app must have all data private per user and device.
 - The app must not allow the user to check the route before login in.
 
-## 2.3 Data Model
+## 2.3. Data Model
 The user is registered with
 ```
 firstName: { 
@@ -82,11 +82,11 @@ date: {
   default: Date.now
 }
 ```
-# 3 Development
+# 3. Development
 
 All the following commands are for Mac.
 
-## 3.1 Installing NodeJS and MongoDB
+## 3.1. Installing NodeJS and MongoDB
 ```
 brew update
 brew install node
@@ -97,7 +97,7 @@ To verify is MongoDB was installed, run
 mongo
 ```
 
-## 3.2 Create app
+## 3.2. Create app
 The first step to creating the app, run
 
 ```
@@ -106,16 +106,18 @@ npm init -y
 
 This command creates the **package.json**.
 
-## 3.3 Installing all dependencies
+## 3.3. Installing all dependencies
 After having the **package.json** file, run
 ```
 npm install bcryptjs connect-flash express express-handlebars express-session method-override mongoose passport passport-local socket.io
 ```
 
-## 3.4 Docker
+## 3.4. Docker
 Download the [Docker graphic installer](https://docs.docker.com/docker-for-mac/install/)
 
 Create the [Dockerfile](Dockerfile), [docker-compose](docker-compose.yml) and [NGINX configuration](nginx.conf)
+
+## 3.5. Deploy in DCA
 
 Clone the repository
 
@@ -142,7 +144,7 @@ http://ipserver_or_domain
 ```
 The domain for this app is: https://cwhiter.dis.eafit.edu.co
 
-## 3.5 Deploy in AWS
+## 3.6. Deploy in AWS
 - Create an accout in [AWS Educate](https://www.awseducate.com)
 - Launch Virtual Machine with EC2
 
