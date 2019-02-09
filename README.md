@@ -82,11 +82,11 @@ date: {
   default: Date.now
 }
 ```
-# Development
+# 3 Development
 
 All the following commands are for Mac.
 
-## 1.1 Installing NodeJS and MongoDB
+## 3.1 Installing NodeJS and MongoDB
 ```
 brew update
 brew install node
@@ -97,7 +97,7 @@ To verify is MongoDB was installed, run
 mongo
 ```
 
-## 1.2 Create app
+## 3.2 Create app
 The first step to creating the app, run
 
 ```
@@ -106,13 +106,13 @@ npm init -y
 
 This command creates the **package.json**.
 
-## Installing all dependencies
+## 3.3 Installing all dependencies
 After having the **package.json** file, run
 ```
 npm install bcryptjs connect-flash express express-handlebars express-session method-override mongoose passport passport-local socket.io
 ```
 
-## Docker
+## 3.4 Docker
 Download the [Docker graphic installer](https://docs.docker.com/docker-for-mac/install/)
 
 Create the [Dockerfile](Dockerfile), [docker-compose](docker-compose.yml) and [NGINX configuration](nginx.conf)
@@ -142,7 +142,7 @@ http://ipserver_or_domain
 ```
 The domain for this app is: https://cwhiter.dis.eafit.edu.co
 
-## Deploy in AWS
+## 3.5 Deploy in AWS
 - Create an accout in [AWS Educate](https://www.awseducate.com)
 - Launch Virtual Machine with EC2
 
