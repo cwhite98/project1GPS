@@ -2,23 +2,23 @@
 
 ### By Camila White Romero - cwhiter@eafit.edu.co
 
-## Description
+# 1 Description
 
 The app lets the user keep track of his location and then see the route he made. 
 The style is based in one of [FaztWeb](https://faztweb.com) tutorials.
 
-## Analysis and Design
+# 2 Analysis and Design
 
-### Functional Requirements
+## 2.1 Functional Requirements
 - The app must let the user Sign Up or Login.
 - The app must let the user thack his location.
 - The app must show with a route all the places he visited.
 
-### Non-Functional Requirements
+## 2.2 Non-Functional Requirements
 - The app must have all data private per user and device.
 - The app must not allow the user to check the route before login in.
 
-### Data Model
+## 2.3 Data Model
 The user is registered with
 ```
 firstName: { 
