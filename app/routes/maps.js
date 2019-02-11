@@ -126,7 +126,7 @@ router.get('/shareRoute/:id', isAuthenticated, async (req, res) => {
     } else if (!user) {
         req.flash('error_msg', 'Username does not exist.');
         res.redirect('/allRoutes');
-    } else if (routeUser <= 0) {
+    } else if (!routeUser) {
         req.flash('error_msg', 'This route has been already shared with that user.');
         res.redirect('/allRoutes');
     } else {
