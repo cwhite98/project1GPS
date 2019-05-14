@@ -13,7 +13,8 @@ function initMap() {
     console.log('ES INIT');
     map = new google.maps.Map(document.getElementById('map'), {
         center: new google.maps.LatLng(6.200367, -75.577609),
-        zoom: 16
+        zoom: 16,
+        fullscreenControl: false
     });
     infoWindow = new google.maps.InfoWindow;
 }

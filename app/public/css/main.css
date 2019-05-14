@@ -40,8 +40,16 @@ body {
 }
 
 #map {
-  height:500px;
-  width: 350%;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;    
+}
+
+#map_canvas {
+  height: max-content;
+  width: max-content;
 }
 
 #map-canvas {
